@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b24">
+  <title>GALAXY SURVIVOR — Space Arcade</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <main id="game-shell">
+    <div id="game-container" aria-label="Galaxy Survivor game arena"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Galaxy Survivor home">
+        <span class="brand-icon">✦</span>
+        GALAXY<span class="brand-accent">SURVIVOR</span>
+      </a>
+      <div class="top-actions">
+        <button id="sound-btn" class="icon-btn" type="button" aria-label="Mute sound">♫</button>
+        <button id="pause-btn" class="icon-btn hidden" type="button" aria-label="Pause game">Ⅱ</button>
+      </div>
+    </header>
+
+    <section id="hud" class="hud hidden" aria-live="polite">
+      <div class="hud-card"><span class="hud-label">SCORE</span><strong id="score">000000</strong></div>
+      <div class="hud-card"><span class="hud-label">SECTOR</span><strong id="wave">01 <small>/ 05</small></strong></div>
+      <div class="hud-card"><span class="hud-label">HULL INTEGRITY</span><div id="health" class="health-pips"><span>♥</span><span>♥</span><span>♥</span></div></div>
+      <div class="hud-card"><span class="hud-label">ELIMINATIONS</span><strong id="kills">0</strong></div>
+    </section>
+
+    <div id="wave-banner" class="wave-banner hidden">
+      <span id="wave-kicker">INCOMING TRANSMISSION</span>
+      <strong id="wave-title">SECTOR 01</strong>
+    </div>
+    <div id="pickup-message" class="pickup-message" role="status" aria-live="polite"></div>
+
+    <section id="menu-screen" class="screen">
+      <div class="menu-content">
+        <div class="eyebrow"><span class="status-dot"></span> DEEP SPACE DIVISION</div>
+        <h1>GALAXY<br><span>SURVIVOR</span></h1>
+        <p class="hero-copy">The universe is yours to survive.<br>Pilot your ship. Survive the swarm.</p>
+        <div class="menu-buttons">
+          <button id="campaign-btn" class="primary-btn" type="button"><span>▶</span> PLAY CAMPAIGN</button>
+          <button id="endless-btn" class="secondary-btn" type="button">∞ &nbsp; ENDLESS MODE</button>
+          <button id="how-btn" class="text-btn" type="button">HOW TO PLAY ↗</button>
+        </div>
+        <div class="best-score"><span>PERSONAL BEST</span><strong id="menu-best">000000</strong></div>
+      </div>
+      <div class="menu-footer"><span>GALACTIC FRONTIER · 2089</span><span>READY FOR LAUNCH <i></i></span></div>
+    </section>
+
+    <section id="how-screen" class="screen hidden">
+      <div class="dialog-card">
+        <div class="eyebrow">PILOT TRAINING</div>
+        <h2>KNOW YOUR <span>MISSION</span></h2>
+        <div class="instruction-grid">
+          <div class="instruction"><span class="instruction-icon">⌨</span><strong>MOVE</strong><p>WASD or arrow keys to fly around the arena.</p></div>
+          <div class="instruction"><span class="instruction-icon">◎</span><strong>AIM & FIRE</strong><p>Move the mouse to aim. Click or hold Space to shoot.</p></div>
+          <div class="instruction"><span class="instruction-icon">♥</span><strong>STAY ALIVE</strong><p>Avoid enemies and projectiles. You have three hull units.</p></div>
+          <div class="instruction"><span class="instruction-icon">✦</span><strong>COLLECT</strong><p>Grab glowing pickups for temporary abilities or health.</p></div>
+        </div>
+        <p class="small-note">Defeat enemies, survive five campaign sectors, or try to beat your endless-mode high score.</p>
+        <button id="back-btn" class="primary-btn" type="button">← BACK TO MENU</button>
+      </div>
+    </section>
+
+    <section id="pause-screen" class="screen hidden">
+      <div class="dialog-card compact">
+        <div class="eyebrow">FLIGHT SUSPENDED</div>
+        <h2>GAME <span>PAUSED</span></h2>
+        <p>Take a breath, pilot. The galaxy can wait.</p>
+        <button id="resume-btn" class="primary-btn" type="button">▶ RESUME</button>
+        <button id="pause-menu-btn" class="secondary-btn" type="button">MAIN MENU</button>
+      </div>
+    </section>
+
+    <section id="gameover-screen" class="screen hidden">
+      <div class="dialog-card compact">
+        <div class="eyebrow" id="result-eyebrow">SIGNAL LOST</div>
+        <h2 id="result-title">MISSION <span>FAILED</span></h2>
+        <p id="result-copy">Your ship has reached its limit.</p>
+        <div class="result-stats">
+          <div><span>FINAL SCORE</span><strong id="final-score">0</strong></div>
+          <div><span>ELIMINATIONS</span><strong id="final-kills">0</strong></div>
+          <div><span>SECTOR</span><strong id="final-wave">1</strong></div>
+        </div>
+        <button id="restart-btn" class="primary-btn" type="button">↻ PLAY AGAIN</button>
+        <button id="result-menu-btn" class="secondary-btn" type="button">MAIN MENU</button>
+      </div>
+    </section>
+
+    <div class="touch-controls" id="touch-controls">
+      <div id="joystick" class="joystick" aria-label="Movement joystick"><div id="joystick-knob"></div></div>
+      <button id="touch-fire" class="touch-fire" type="button">FIRE</button>
+    </div>
+
+    <footer class="game-footer">
+      <span>WASD / ARROWS <i>MOVE</i></span>
+      <span>MOUSE <i>AIM</i></span>
+      <span>CLICK / SPACE <i>FIRE</i></span>
+    </footer>
+  </main>
+</body>
+</html>
